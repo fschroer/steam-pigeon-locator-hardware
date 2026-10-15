@@ -15867,7 +15867,7 @@
 			)
 		)
 	)
-	(footprint "RT9080:SOT94P280X100-5N"
+	(footprint "Custom:SOT94P280X100-5N"
 		(layer "B.Cu")
 		(uuid "142e2cf6-b82f-4007-9894-377d26b8ab0d")
 		(at 40.78 33.9 -90)
@@ -21658,7 +21658,7 @@
 			)
 		)
 	)
-	(footprint "Package_SO_New:SOP-8_5.28x5.23mm_P1.27mm"
+	(footprint "Custom:SOP-8_5.28x5.23mm_P1.27mm"
 		(layer "B.Cu")
 		(uuid "8d3be09a-a25f-46c0-9690-b60266dd1c06")
 		(at 31.93 39.5 90)

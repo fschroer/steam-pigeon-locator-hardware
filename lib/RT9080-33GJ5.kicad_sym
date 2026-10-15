@@ -33,7 +33,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "SOT94P280X100-5N"
+		(property "Footprint" "Custom:SOT94P280X100-5N"
 			(at 24.13 2.54 0)
 			(show_name no)
 			(do_not_autoplace no)

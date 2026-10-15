@@ -42,7 +42,7 @@ Non-stock parts live in `lib/` and are registered in the project's `sym-lib-tabl
 | `STM32WL5MOCH6TR.kicad_sym` | STM32WL5MOC module symbol | Extracted from the schematic's embedded symbol cache |
 | `U.FL-R-SMT_01_.kicad_sym` | U.FL receptacle symbol | Extracted from the schematic's embedded symbol cache |
 
-Not yet bundled: footprints `RT9080:SOT94P280X100-5N` (U7) and `Package_SO_New:SOP-8_5.28x5.23mm_P1.27mm` (U17). The board file embeds them, so the PCB opens normally, but "Update footprints from library" can't find them until they're added.
+`Custom.pretty` also holds `SOT94P280X100-5N` (U7) and `SOP-8_5.28x5.23mm_P1.27mm` (U17). Their original libraries (`RT9080`, `Package_SO_New`) no longer existed, so they were recovered from the board file, converted back to front-side library form, and the design was relinked to `Custom:`.
 
 When you change a part, edit it in `lib/` (not in your personal library) and commit it with the design change. All 3D models referenced by the footprints come from KiCad's stock 3D library.
 
