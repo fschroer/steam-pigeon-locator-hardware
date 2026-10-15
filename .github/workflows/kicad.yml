@@ -24,6 +24,12 @@ jobs:
       - name: Tools
         run: apt-get update -qq && apt-get install -y -qq zip
 
+      - name: Check project libraries load
+        run: |
+          mkdir -p /tmp/libcheck
+          for f in lib/*.kicad_sym; do kicad-cli sym export svg -o /tmp/libcheck "$f"; done
+          for d in lib/*.pretty; do kicad-cli fp export svg -o /tmp/libcheck "$d"; done
+
       - name: ERC
         run: kicad-cli sch erc --format report -o erc.rpt "$PROJ.kicad_sch" || true
 

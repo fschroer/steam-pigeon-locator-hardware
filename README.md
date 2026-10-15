@@ -21,7 +21,8 @@ Board size is 54 x 25 mm, 4 layers. The silkscreen carries the board revision (c
 | Path | Contents |
 | --- | --- |
 | `RocketLocator.kicad_pro`, `.kicad_sch`, `.kicad_pcb` | The design |
-| `lib/` | Project-local symbol and footprint libraries (not added yet, see below) |
+| `lib/` | Project-local symbol and footprint libraries |
+| `sym-lib-table`, `fp-lib-table` | Project library tables pointing into `lib/` |
 | `.github/workflows/kicad.yml` | ERC, DRC and fab outputs on every push |
 
 Generated files (Gerbers, drill, BOM, CPL, netlist, PDF) are not committed. CI builds them on every push as a downloadable workflow artifact, and attaches them to a GitHub release when you push a board tag.
@@ -32,7 +33,18 @@ Findings from the 2026-10-15 design review are tracked as GitHub issues. The ful
 
 ## Libraries
 
-The design uses `Custom:`, `RT9080-33GJ5:`, `STM32WL5MOCH6TR:` and `U.FL-R-SMT_01_:` symbols and footprints. Keep them in `lib/` and register them in the project's `sym-lib-table` and `fp-lib-table` with `${KIPRJMOD}/lib/...` paths, so a fresh clone opens without your global library setup.
+Non-stock parts live in `lib/` and are registered in the project's `sym-lib-table` and `fp-lib-table` with `${KIPRJMOD}` paths, so a fresh clone opens without any global library setup. Project entries override a global library with the same nickname.
+
+| Library | Contents | Source |
+| --- | --- | --- |
+| `Custom.kicad_sym`, `Custom.pretty` | Project symbols and footprints | Copied from the personal KiCad 9.0 `Custom` libraries, 2026-10-15 |
+| `RT9080-33GJ5.kicad_sym` | RT9080-33 LDO symbol | Extracted from the schematic's embedded symbol cache |
+| `STM32WL5MOCH6TR.kicad_sym` | STM32WL5MOC module symbol | Extracted from the schematic's embedded symbol cache |
+| `U.FL-R-SMT_01_.kicad_sym` | U.FL receptacle symbol | Extracted from the schematic's embedded symbol cache |
+
+Not yet bundled: footprints `RT9080:SOT94P280X100-5N` (U7) and `Package_SO_New:SOP-8_5.28x5.23mm_P1.27mm` (U17). The board file embeds them, so the PCB opens normally, but "Update footprints from library" can't find them until they're added.
+
+When you change a part, edit it in `lib/` (not in your personal library) and commit it with the design change. All 3D models referenced by the footprints come from KiCad's stock 3D library.
 
 ## Releasing a board
 

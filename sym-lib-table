@@ -1,0 +1,7 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "Custom")(type "KiCad")(uri "${KIPRJMOD}/lib/Custom.kicad_sym")(options "")(descr "Project symbols"))
+  (lib (name "RT9080-33GJ5")(type "KiCad")(uri "${KIPRJMOD}/lib/RT9080-33GJ5.kicad_sym")(options "")(descr "Richtek RT9080-33 LDO"))
+  (lib (name "STM32WL5MOCH6TR")(type "KiCad")(uri "${KIPRJMOD}/lib/STM32WL5MOCH6TR.kicad_sym")(options "")(descr "ST STM32WL5MOC module"))
+  (lib (name "U.FL-R-SMT_01_")(type "KiCad")(uri "${KIPRJMOD}/lib/U.FL-R-SMT_01_.kicad_sym")(options "")(descr "Hirose U.FL receptacle"))
+)
