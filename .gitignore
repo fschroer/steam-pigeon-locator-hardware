@@ -1,0 +1,31 @@
+# KiCad lock, cache and per-user files
+*.lck
+~*.lck
+fp-info-cache
+*.kicad_prl
+_autosave-*
+*-bak
+*.kicad_sch-bak*
+*.bak
+\#auto_saved_files\#
+.history/
+
+# KiCad backups (git is the history now)
+*-backups/
+
+# Generated outputs: published as release files by CI, not committed
+/Gerbers/
+/fab/
+/output/
+*.zip
+*.gbr
+*.drl
+*-pos.csv
+
+# Stale exports; regenerate with kicad-cli when needed
+*.net
+
+# OS clutter
+.DS_Store
+Thumbs.db
+desktop.ini

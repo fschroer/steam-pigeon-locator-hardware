@@ -1,0 +1,65 @@
+name: KiCad checks and fab outputs
+
+on:
+  push:
+    branches: [main]
+    tags: ['B*']
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  kicad:
+    runs-on: ubuntu-latest
+    container:
+      # Must match the KiCad major version used to save the files (10.x).
+      image: kicad/kicad:10.0
+      options: --user root
+    permissions:
+      contents: write
+    env:
+      PROJ: RocketLocator
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tools
+        run: apt-get update -qq && apt-get install -y -qq zip
+
+      - name: ERC
+        run: kicad-cli sch erc --format report -o erc.rpt "$PROJ.kicad_sch" || true
+
+      - name: DRC
+        run: kicad-cli pcb drc --format report -o drc.rpt "$PROJ.kicad_pcb" || true
+        # Report-only for now. Once the design is clean, replace "|| true" with
+        # --exit-code-violations on both steps so violations fail the build.
+
+      - name: Fabrication outputs
+        run: |
+          mkdir -p fab/gerbers
+          kicad-cli pcb export gerbers -o fab/gerbers/ "$PROJ.kicad_pcb"
+          kicad-cli pcb export drill --excellon-separate-th -o fab/gerbers/ "$PROJ.kicad_pcb"
+          kicad-cli pcb export pos --format csv --units mm --side both -o "fab/$PROJ-pos.csv" "$PROJ.kicad_pcb"
+          kicad-cli sch export bom -o "fab/$PROJ-bom.csv" \
+            --fields 'Reference,Value,Footprint,${QUANTITY},Manufacturer_Part_Number,LCSC' \
+            --group-by Value,Footprint "$PROJ.kicad_sch"
+          kicad-cli sch export netlist -o "fab/$PROJ.net" "$PROJ.kicad_sch"
+          kicad-cli sch export pdf -o "fab/$PROJ-schematic.pdf" "$PROJ.kicad_sch"
+          (cd fab/gerbers && zip -q "../$PROJ-gerbers.zip" *)
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kicad-outputs
+          path: |
+            erc.rpt
+            drc.rpt
+            fab/
+
+      - name: Attach outputs to the release for a board tag
+        if: startsWith(github.ref, 'refs/tags/B')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            fab/*.zip
+            fab/*.csv
+            fab/*.pdf
+            erc.rpt
+            drc.rpt
