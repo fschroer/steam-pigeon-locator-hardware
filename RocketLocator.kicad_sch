@@ -18446,7 +18446,7 @@
 				)
 			)
 		)
-		(property "Footprint" "RT9080:SOT94P280X100-5N"
+		(property "Footprint" "Custom:SOT94P280X100-5N"
 			(at 237.49 35.56 0)
 			(hide yes)
 			(show_name no)
@@ -20322,7 +20322,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_SO_New:SOP-8_5.28x5.23mm_P1.27mm"
+		(property "Footprint" "Custom:SOP-8_5.28x5.23mm_P1.27mm"
 			(at 379.73 231.14 0)
 			(hide yes)
 			(show_name no)
