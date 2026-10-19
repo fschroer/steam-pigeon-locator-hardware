@@ -11,7 +11,7 @@ KiCad 10 design for the Steam Pigeon rocket locator: an STM32WL5MOC LoRa module 
 | Sensors | ISM6HG256X IMU (U14), MS5611 barometer (U16), MX25L6436F flash (U17), all on SPI2 |
 | Power | BQ25185 charger (U18), RT9080-33 LDO (U7), DRV5032 Hall sensor and 74HCS00 latch for magnet on/off |
 | USB | USB-C (J1), CH340N serial (U4) |
-| Deployment | Arm switch U13 (DMP2021UFDF) driven by DARM, four TPS22950 high-side switches plus AO3400A low-side return switches (Q4-Q7) on J2 and J4; continuity sense DS1-DS4 on the return side |
+| Deployment | Arm switch U13 (DMP2021UFDF) driven by DARM, four TPS22950 high-side switches plus PMXB43UNE (DFN1010D-3) low-side return switches (Q4-Q7) on J2 and J4; continuity sense DS1-DS4 on the return side |
 | Audio | PAM8904 piezo driver (U11) |
 
 Board size is 54 x 25 mm, 4 layers. The silkscreen carries the board revision (currently `SPL915STM B01`).
