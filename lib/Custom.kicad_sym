@@ -2476,7 +2476,7 @@
 					)
 				)
 			)
-			(pin output line
+			(pin bidirectional line
 				(at 5.08 -6.35 0)
 				(length 2.54)
 				(name "SDO/TA0"
@@ -2602,7 +2602,7 @@
 					)
 				)
 			)
-			(pin power_out line
+			(pin power_in line
 				(at 17.78 -25.4 90)
 				(length 2.54)
 				(name "GND"
@@ -2638,7 +2638,7 @@
 					)
 				)
 			)
-			(pin power_out line
+			(pin power_in line
 				(at 20.32 -25.4 90)
 				(length 2.54)
 				(name "GND"

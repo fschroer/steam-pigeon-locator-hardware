@@ -1,0 +1,203 @@
+(footprint "Nexperia_DFN1010D-3_SOT1215"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Nexperia DFN1010D-3 (SOT1215), 1.1x1.0x0.37 mm, pitch 0.75 mm. Lands per PMXB43UNE datasheet Fig. 20: 0.35x0.4 mm lands, 0.25x0.3 mm paste, 0.45x0.5 mm solder resist. The centre drain bar (pin 4) has no land: keep copper out from under the body between the lands.")
+	(tags "DFN1010D-3 SOT1215 Nexperia")
+	(property "Reference" "REF**"
+		(at 0 -1.25 0)
+		(layer "F.SilkS")
+		(uuid "229d47cd-84cc-53ba-b14e-c63af8ad4e73")
+		(effects
+			(font
+				(size 0.5 0.5)
+				(thickness 0.08)
+			)
+		)
+	)
+	(property "Value" "Nexperia_DFN1010D-3_SOT1215"
+		(at 0 1.25 0)
+		(layer "F.Fab")
+		(uuid "d639d960-eab1-5031-becf-5527a513d38f")
+		(effects
+			(font
+				(size 0.3 0.3)
+				(thickness 0.05)
+			)
+		)
+	)
+	(property "Datasheet" "https://assets.nexperia.com/documents/package-information/SOT1215.pdf"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "18bc3ef8-e4bd-5cdc-ada0-ec803b7f8553")
+		(effects
+			(font
+				(size 0.5 0.5)
+				(thickness 0.08)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e7adb237-ca35-5126-9e6b-a9d540235bd2")
+		(effects
+			(font
+				(size 0.5 0.5)
+				(thickness 0.08)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -0.72 -0.15)
+		(end -0.72 0.65)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "380279e1-b66c-5cad-9eaf-ca9d43a916d4")
+	)
+	(fp_line
+		(start 0.72 -0.15)
+		(end 0.72 0.65)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "8ca6f932-2ee7-5c6c-bf75-76481d6f2286")
+	)
+	(fp_line
+		(start 0.5 -0.85)
+		(end 0.8 -0.85)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "c39a6706-0445-520f-9a8d-61bda610b7ab")
+	)
+	(fp_line
+		(start 0.8 -0.85)
+		(end 0.8 -0.55)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "7ca830d5-9f6a-5c8e-b01c-1a4fbb0693a4")
+	)
+	(fp_line
+		(start -0.55 -0.5)
+		(end 0.35 -0.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "793cd785-0ad2-5430-ba70-e69b5b6ae015")
+	)
+	(fp_line
+		(start 0.35 -0.5)
+		(end 0.55 -0.3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "a2a7e782-6caa-57e0-a7db-c150d6756b97")
+	)
+	(fp_line
+		(start 0.55 -0.3)
+		(end 0.55 0.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "2d47ea85-16b8-551e-917d-c17a2e2671d5")
+	)
+	(fp_line
+		(start 0.55 0.5)
+		(end -0.55 0.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "d2b02abd-6787-50f9-a61f-3d7120811efb")
+	)
+	(fp_line
+		(start -0.55 0.5)
+		(end -0.55 -0.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "eafb4cc8-24e6-5fd0-a095-b2778fb5faf6")
+	)
+	(fp_rect
+		(start -0.45 0.005)
+		(end 0.45 0.195)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "4278d2c6-61c2-5612-91b5-e44966840ccd")
+	)
+	(fp_rect
+		(start -0.85 -0.9)
+		(end 0.85 0.9)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "acedb0e5-39c5-52e8-b321-2523c18c6e16")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "fb988d0e-bcf8-5042-81b9-58447efc0db2")
+		(effects
+			(font
+				(size 0.25 0.25)
+				(thickness 0.04)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at 0.375 -0.45)
+		(size 0.35 0.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(solder_mask_margin 0.05)
+		(solder_paste_margin -0.05)
+		(uuid "7c841200-2644-5e74-ba4b-1629a96c9eb8")
+	)
+	(pad "2" smd rect
+		(at -0.375 -0.45)
+		(size 0.35 0.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(solder_mask_margin 0.05)
+		(solder_paste_margin -0.05)
+		(uuid "bab19621-2e09-5f36-b93a-885e342407b4")
+	)
+	(pad "3" smd rect
+		(at 0 0.45)
+		(size 0.35 0.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(solder_mask_margin 0.05)
+		(solder_paste_margin -0.05)
+		(uuid "9a90e972-80d3-5b09-a19a-c18b2b85d69f")
+	)
+	(embedded_fonts no)
+)
