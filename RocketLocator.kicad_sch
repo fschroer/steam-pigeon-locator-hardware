@@ -3559,7 +3559,7 @@
 						(type background)
 					)
 				)
-				(pin output line
+				(pin bidirectional line
 					(at 5.08 -6.35 0)
 					(length 2.54)
 					(name "SDO/TA0"
@@ -3649,7 +3649,7 @@
 						)
 					)
 				)
-				(pin power_out line
+				(pin power_in line
 					(at 17.78 -25.4 90)
 					(length 2.54)
 					(name "GND"
@@ -3667,7 +3667,7 @@
 						)
 					)
 				)
-				(pin power_out line
+				(pin power_in line
 					(at 20.32 -25.4 90)
 					(length 2.54)
 					(name "GND"
@@ -11468,6 +11468,10 @@
 	(no_connect
 		(at 96.52 223.52)
 		(uuid "03c92365-2858-4168-b823-c9776ed92616")
+	)
+	(no_connect
+		(at 240.03 100.33)
+		(uuid "22212a8f-e6f2-4d28-8c7c-7379a63ad890")
 	)
 	(no_connect
 		(at 68.58 171.45)
