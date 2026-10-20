@@ -23,6 +23,7 @@ Board size is 54 x 25 mm, 4 layers. The silkscreen carries the board revision (c
 | `RocketLocator.kicad_pro`, `.kicad_sch`, `.kicad_pcb` | The design |
 | `lib/` | Project-local symbol and footprint libraries |
 | `sym-lib-table`, `fp-lib-table` | Project library tables pointing into `lib/` |
+| `BOM/RocketLocatorBOM.xlsx` | Purchasing BOM: JLCPCB part numbers, cost, stock and order tracking, plus a JLCPCB upload sheet. Maintained by hand; keep it in step with the schematic |
 | `.github/workflows/kicad.yml` | ERC, DRC and fab outputs on every push |
 
 Generated files (Gerbers, drill, BOM, CPL, netlist, PDF) are not committed. CI builds them on every push as a downloadable workflow artifact, and attaches them to a GitHub release when you push a board tag.
