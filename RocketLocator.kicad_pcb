@@ -19742,7 +19742,7 @@
 	(footprint "Custom:SteamPigeon_Logo_13mm"
 		(layer "B.Cu")
 		(uuid "6eb2f8b7-91ac-4bf9-9086-05a30de9f671")
-		(at 58.8 32.6 180)
+		(at 60.03 33.28 180)
 		(descr "Steam Pigeon app logo (winged rocket), silkscreen art")
 		(tags "logo steam pigeon rocket")
 		(property "Reference" "G1"
