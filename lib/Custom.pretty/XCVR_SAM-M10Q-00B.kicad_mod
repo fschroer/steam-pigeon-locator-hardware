@@ -1565,4 +1565,15 @@
 		(uuid "dca6f31e-57cc-4c99-bb2a-cdc78a951c02")
 	)
 	(embedded_fonts no)
+	(model "${KIPRJMOD}/lib/3dmodels/u-blox_SAM-M10Q.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

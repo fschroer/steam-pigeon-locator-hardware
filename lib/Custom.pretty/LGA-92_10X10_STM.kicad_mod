@@ -741,4 +741,15 @@
 		(uuid "aa417ffc-698b-4482-9d89-01bb75d8f9a1")
 	)
 	(embedded_fonts no)
+	(model "${KIPRJMOD}/lib/3dmodels/ST_LGA-92_10x10mm_STM32WL5MOC.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

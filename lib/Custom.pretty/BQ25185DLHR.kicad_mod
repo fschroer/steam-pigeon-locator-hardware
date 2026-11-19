@@ -242,4 +242,15 @@
 		(uuid "3a7e6256-dfab-46e7-b75f-312d9616d910")
 	)
 	(embedded_fonts no)
+	(model "${KIPRJMOD}/lib/3dmodels/kicad/Texas_DLH0010A_WSON-10-1EP_2.2x2mm_P0.4mm_EP0.9x1.5mm.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )
