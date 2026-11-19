@@ -482,7 +482,7 @@
 		(uuid "765f1a68-7947-4a5c-8d32-8a31e390dbaa")
 	)
 	(embedded_fonts no)
-	(model "${KICAD9_3DMODEL_DIR}/Package_DFN_QFN.3dshapes/DHVQFN-14-1EP_2.5x3mm_P0.5mm_EP1x1.5mm.step"
+	(model "${KIPRJMOD}/lib/3dmodels/Texas_BQA_WQFN-14-1EP_2.5x3mm_P0.5mm.step"
 		(offset
 			(xyz 0 0 0)
 		)

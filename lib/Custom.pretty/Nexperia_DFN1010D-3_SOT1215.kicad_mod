@@ -200,4 +200,15 @@
 		(uuid "9a90e972-80d3-5b09-a19a-c18b2b85d69f")
 	)
 	(embedded_fonts no)
+	(model "${KIPRJMOD}/lib/3dmodels/Nexperia_DFN1010D-3_SOT1215.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

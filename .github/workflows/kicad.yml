@@ -49,6 +49,9 @@ jobs:
             --group-by Value,Footprint "$PROJ.kicad_sch"
           kicad-cli sch export netlist -o "fab/$PROJ.net" "$PROJ.kicad_sch"
           kicad-cli sch export pdf -o "fab/$PROJ-schematic.pdf" "$PROJ.kicad_sch"
+          # 3D models live in lib/3dmodels (${KIPRJMOD}-relative), so the STEP is complete here.
+          kicad-cli pcb export step --subst-models -f -o "fab/$PROJ.step" "$PROJ.kicad_pcb" 2>&1 | tee step.log
+          if grep -q "Could not add 3D model" step.log; then echo "::warning::Some footprints have no 3D model (see step.log)"; fi
           (cd fab/gerbers && zip -q "../$PROJ-gerbers.zip" *)
 
       - uses: actions/upload-artifact@v4
@@ -67,5 +70,6 @@ jobs:
             fab/*.zip
             fab/*.csv
             fab/*.pdf
+            fab/*.step
             erc.rpt
             drc.rpt

@@ -475,4 +475,15 @@
 		(uuid "aaa7df6d-5eb9-4529-b6af-08587ba12fd4")
 	)
 	(embedded_fonts no)
+	(model "${KIPRJMOD}/lib/3dmodels/Texas_DSBGA-6_YBH_0.8x1.2mm_P0.4mm.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

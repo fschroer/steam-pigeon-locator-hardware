@@ -290,7 +290,7 @@
 		(layers "F.Cu" "F.Mask" "F.Paste")
 	)
 	(embedded_fonts no)
-	(model "RT9080-33GJ5.stp"
+	(model "${KIPRJMOD}/lib/3dmodels/kicad/SOT-23-5.step"
 		(offset
 			(xyz 0 0 0)
 		)

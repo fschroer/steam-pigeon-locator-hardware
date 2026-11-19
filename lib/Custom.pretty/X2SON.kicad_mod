@@ -220,4 +220,15 @@
 		(uuid "31ed41a8-8652-42ce-b489-9d4fdd0577ff")
 	)
 	(embedded_fonts no)
+	(model "${KIPRJMOD}/lib/3dmodels/TI_X2SON-4-1EP_1.1x1.4mm.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

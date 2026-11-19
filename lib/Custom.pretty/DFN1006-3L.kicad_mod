@@ -206,7 +206,7 @@
 		(uuid "68185bfd-a946-4ce5-8acd-cd49692bb628")
 	)
 	(embedded_fonts no)
-	(model "${KICAD9_3DMODEL_DIR}/Package_DFN_QFN.3dshapes/Diodes_DFN1006-3.step"
+	(model "${KIPRJMOD}/lib/3dmodels/DFN1006-3L_1.0x0.6mm.step"
 		(offset
 			(xyz 0 0 0)
 		)
