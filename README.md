@@ -45,14 +45,14 @@ Non-stock parts live in `lib/` and are registered in the project's `sym-lib-tabl
 
 `Custom.pretty` also holds `SOT94P280X100-5N` (U7) and `SOP-8_5.28x5.23mm_P1.27mm` (U17). Their original libraries (`RT9080`, `Package_SO_New`) no longer existed, so they were recovered from the board file, converted back to front-side library form, and the design was relinked to `Custom:`.
 
-When you change a part, edit it in `lib/` (not in your personal library) and commit it with the design change. All 3D models referenced by the footprints come from KiCad's stock 3D library.
+When you change a part, edit it in `lib/` (not in your personal library) and commit it with the design change. 3D models live in `lib/3dmodels` (see its README) and are referenced with `${KIPRJMOD}` paths, so **File > Export > STEP** and CI's `fab/RocketLocator.step` include every part. When you add a footprint, give it a model there too (copy a stock STEP into `lib/3dmodels/kicad/`, or add a generator entry in `tools/gen_3dmodels.py`), then add it to `tools/set_3dmodels.py`.
 
 ## Releasing a board
 
 1. Make sure ERC and DRC are clean.
 2. Update the silkscreen revision and date.
 3. Commit, then tag with the board revision and order date, for example `git tag B02-2026-11-20 && git push --tags`.
-4. Download the Gerber zip, BOM and CPL from the release and upload them to the fab.
+4. Download the Gerber zip, BOM, CPL and STEP from the release and upload them to the fab.
 
 ## Working copy
 

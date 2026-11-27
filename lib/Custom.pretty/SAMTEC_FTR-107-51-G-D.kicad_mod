@@ -218,4 +218,15 @@
 		(uuid "0030cb19-15f2-4cf3-a787-188f1a476aef")
 	)
 	(embedded_fonts no)
+	(model "${KIPRJMOD}/lib/3dmodels/kicad/PinHeader_2x07_P1.27mm_Vertical_SMD.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 90)
+		)
+	)
 )
