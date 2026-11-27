@@ -3758,16 +3758,16 @@
 		)
 		(uuid "25f57fe0-e23e-5457-918a-948b86e67896")
 	)
-	(text "I2C I/O expander, address 0x20 (A2..A0 = 0), shares I2C2 with GPS (0x42) and magnetometer (0x30).\nSlow signals only: status LEDs, continuity-sense enable (DSON) and battery-read enable (BATTRD).\nOutputs power up as inputs with ~100k pull-ups: LEDs off, DSON off, BATTRD on until firmware drives it. P5..P7 spare (power-off FET, MSW sense)."
+	(text "RF switch: DIO2 is high during TX; CTRL high selects RF1 (TX) as in the Semtech reference design. RF_LORA goes to J7 (U.FL).\nC62/C68/L11/C69 = Semtech harmonic + RX filter after the switch (C8/C9/L5/C10). Antenna matching not included."
 		(exclude_from_sim no)
-		(at 12.7 246.38 0)
+		(at 12.7 233.68 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left top)
 		)
-		(uuid "61dbadb8-ddc8-593a-a465-8726cca77009")
+		(uuid "5093acdb-3568-5a9b-b981-d7a58ba2c97c")
 	)
 	(text "nRF54L15 crystals use the internal load capacitors (set in firmware). Verify DECD cap and the 2.4 GHz match against Nordic reference config 1."
 		(exclude_from_sim no)
@@ -3780,16 +3780,16 @@
 		)
 		(uuid "9a47576d-0c2f-521f-8a8c-e94a69448dde")
 	)
-	(text "RF switch: DIO2 is high during TX, so CTRL high must select RF1 (TX), as in the Semtech reference design. Confirm against the PE4259 truth table.\nRF_LORA goes to J7 (U.FL). C62 (47 pF) is a DC block; Semtech uses C8/C9/L5/C10 here for antenna matching."
+	(text "I2C I/O expander, address 0x20 (A2..A0 = 0), shares I2C2 with GPS (0x42) and magnetometer (0x30).\nSlow signals only: status LEDs, continuity-sense enable (DSON) and battery-read enable (BATTRD).\nOutputs power up as inputs with ~100k pull-ups: LEDs off, DSON off, BATTRD on until firmware drives it. P5..P7 spare (power-off FET, MSW sense)."
 		(exclude_from_sim no)
-		(at 12.7 233.68 0)
+		(at 12.7 246.38 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left top)
 		)
-		(uuid "be4a4e16-d608-5c21-af55-65f6f0c195e8")
+		(uuid "9c2ada41-558b-5cdb-9dfa-7e62eb27c87c")
 	)
 	(text "LoRa radio: Semtech SX1262, 915 MHz high-power PA (+22 dBm max). Same radio core as the STM32WL, so the receiver link is unchanged.\nSPI shared with flash/IMU/baro. DIO2 drives the RF switch, DIO3 powers the TCXO (set 2.7 V in firmware for this TCXO)."
 		(exclude_from_sim no)
@@ -3802,7 +3802,7 @@
 		)
 		(uuid "c2b2448b-6063-563f-bedb-222dcbfa4992")
 	)
-	(text "SX1262 RF network follows the topology of Semtech reference design PCB_E449V01A (AN1200.40 Fig. 10 and 15). Ref-design designators:\nTX: L7=L2 (series from RFO), L6=L1 (VR_PA choke), C59=C3, L8||C56=L3||C4 (2nd-harmonic notch), C57=C5, C58=C6 (DC block), L10=L4, C65=C7.\nRX: C60=C11 (series), L9=L6 (RFI_N-RFI_P), C64=C12, C66=C13 (optional, not fitted). VR_PA decoupling C54/C55 = C1/C2.\nValues marked TBD: AN1200.40 gives no SX1262 915 MHz BOM; take them from the E449V01A / E428V03A US915 BOM (Semtech reference design files)."
+	(text "SX1262 RF network = Semtech US915 reference design (SX1262MB1PAS E449V01A BOM; E428V03A and E499V01B list identical RF values). Ref-design designators:\nTX: R58=L2 (0R), L6=L1 (PA choke), C59=C3 (not fitted), L8||C56=L3||C4 (2nd-harmonic notch), C57=C5, C58=C6 (DC block), L10=L4, C65=C7.\nRX: C60=C11, L9=L6 (RFI_N-RFI_P), C64=C12, C66=C13 (not fitted). VR_PA decoupling C54/C55 = C1/C2. Antenna side: C62=C8, C68=C9, L11=L5, C69=C10.\nAll RF parts 0402: Murata GJM1555 C0G caps, LQW15 wirewound inductors (MPN field). Values tuned on Semtech PCB; expect to re-tune on this board."
 		(exclude_from_sim no)
 		(at 12.7 218.44 0)
 		(effects
@@ -3865,15 +3865,19 @@
 		(at 363.22 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "c1537fb8-4649-57b3-9dc0-39422000eb29")
+		(uuid "a618850e-8f59-5348-8252-ac01418962f6")
 	)
 	(no_connect
-		(at 365.76 73.66)
-		(uuid "51acf7e8-9e13-520b-88a2-5015e3072bd8")
+		(at 386.08 78.74)
+		(uuid "4dcd1cc2-f1ce-5665-b34d-93453d4ea869")
 	)
 	(no_connect
 		(at 386.08 83.82)
-		(uuid "95f63dbe-9a2b-534f-850d-8b83247ce6d1")
+		(uuid "5e394961-3ab6-50e5-98f6-516b40919aa6")
+	)
+	(no_connect
+		(at 365.76 73.66)
+		(uuid "71d13bd6-d6d4-5988-a078-09f4511a1478")
 	)
 	(no_connect
 		(at 104.14 190.5)
@@ -3889,15 +3893,11 @@
 	)
 	(no_connect
 		(at 386.08 81.28)
-		(uuid "dda9ff5c-ec0a-5520-bc87-b0edfa2a7f17")
+		(uuid "be5cf60b-b70a-5918-bcc0-c08a38772b78")
 	)
 	(no_connect
 		(at 91.44 116.84)
 		(uuid "e6faede9-d921-589c-ada1-a086082398a4")
-	)
-	(no_connect
-		(at 386.08 78.74)
-		(uuid "f9785993-28c6-5f20-944e-033d85eefe34")
 	)
 	(wire
 		(pts
@@ -3921,6 +3921,26 @@
 	)
 	(wire
 		(pts
+			(xy 365.76 81.28) (xy 363.22 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0597ab3e-ca39-5e5a-a86e-21a80422f5e2")
+	)
+	(wire
+		(pts
+			(xy 363.22 81.28) (xy 363.22 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0813093c-7cb3-5100-a03f-c93e2842f743")
+	)
+	(wire
+		(pts
 			(xy 66.04 78.74) (xy 68.58 78.74)
 		)
 		(stroke
@@ -3931,16 +3951,6 @@
 	)
 	(wire
 		(pts
-			(xy 363.22 78.74) (xy 363.22 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1074e802-efe6-5245-af94-5e68884ad1ed")
-	)
-	(wire
-		(pts
 			(xy 73.66 144.78) (xy 73.66 147.32)
 		)
 		(stroke
@@ -3948,16 +3958,6 @@
 			(type default)
 		)
 		(uuid "10d7909f-9784-53a1-a2bd-ea2af3aa6e1b")
-	)
-	(wire
-		(pts
-			(xy 365.76 78.74) (xy 363.22 78.74)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2b40ad9a-59f1-5e1f-bdfd-c3bdd7787f03")
 	)
 	(wire
 		(pts
@@ -4031,16 +4031,6 @@
 	)
 	(wire
 		(pts
-			(xy 363.22 81.28) (xy 363.22 83.82)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "71d13bd6-d6d4-5988-a078-09f4511a1478")
-	)
-	(wire
-		(pts
 			(xy 68.58 147.32) (xy 71.12 147.32)
 		)
 		(stroke
@@ -4061,13 +4051,23 @@
 	)
 	(wire
 		(pts
+			(xy 363.22 78.74) (xy 363.22 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "73f29473-b10e-5d36-bac2-471151aac344")
+	)
+	(wire
+		(pts
 			(xy 365.76 83.82) (xy 363.22 83.82)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "783fcb0a-22a3-513d-8526-e1e10834a999")
+		(uuid "772d0fd8-3973-5e5b-8855-b26d3814b8bf")
 	)
 	(wire
 		(pts
@@ -4098,16 +4098,6 @@
 			(type default)
 		)
 		(uuid "818586b6-8336-594c-9d6e-2d5db6d37b03")
-	)
-	(wire
-		(pts
-			(xy 365.76 81.28) (xy 363.22 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "88564994-e1e9-5f57-bf36-d8c5f1258f4d")
 	)
 	(wire
 		(pts
@@ -4148,6 +4138,16 @@
 			(type default)
 		)
 		(uuid "ba612944-2211-52aa-a01b-b514ea954f9a")
+	)
+	(wire
+		(pts
+			(xy 365.76 78.74) (xy 363.22 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dd877da9-c4c8-5db9-a80f-aa3aa5444c4c")
 	)
 	(wire
 		(pts
@@ -4309,6 +4309,16 @@
 		)
 		(uuid "2e56ca4e-6ab1-5dfa-a564-a5d3d483cbba")
 	)
+	(label "RF_COM"
+		(at 325.12 214.63 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "347f7397-b4e4-5c8d-b329-6a5f7a7cd7d8")
+	)
 	(label "LORA_RFI_P"
 		(at 256.54 121.92 0)
 		(effects
@@ -4338,16 +4348,6 @@
 			(justify left bottom)
 		)
 		(uuid "36d2512e-785f-54dd-b710-0e71f33981be")
-	)
-	(label "RF_SW_CTRL_F"
-		(at 309.88 191.77 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "378959b2-020f-50c0-9c19-98b2c3a392ab")
 	)
 	(label "TCXO_OUT"
 		(at 307.34 96.52 0)
@@ -4388,6 +4388,16 @@
 			(justify left bottom)
 		)
 		(uuid "3df7994f-0a8c-58b2-855a-e0c69a71d3e5")
+	)
+	(label "RF_ANT1"
+		(at 325.12 222.25 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "407369fb-e540-5326-a954-d4f6557dd42e")
 	)
 	(label "LORA_DCC"
 		(at 238.76 31.75 90)
@@ -4438,6 +4448,16 @@
 			(justify left bottom)
 		)
 		(uuid "5a049ce6-d7af-5830-8cff-1b47d6773de8")
+	)
+	(label "RF_ANT1"
+		(at 345.44 214.63 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5b39ca05-6e5a-5ca4-a80f-48a99ba59f25")
 	)
 	(label "NRF_RF3"
 		(at 81.28 191.77 90)
@@ -4518,6 +4538,26 @@
 			(justify left bottom)
 		)
 		(uuid "798994f1-1870-5550-a5a5-dfa5de7a6472")
+	)
+	(label "RF_ANT1"
+		(at 335.28 214.63 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7b1e2ce0-25d2-5c03-8834-ec5dcc2804ec")
+	)
+	(label "RF_SW_CTRL_F"
+		(at 309.88 191.77 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7b3ba88f-d235-5798-85ef-fe7b13751a61")
 	)
 	(label "XL2"
 		(at 143.51 121.92 0)
@@ -4699,16 +4739,6 @@
 		)
 		(uuid "b589431d-4d9c-52da-bf63-0a9a7dd3abe7")
 	)
-	(label "RF_SW_CTRL_F"
-		(at 320.04 184.15 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "b7f49b52-00eb-5495-8fc4-ed0b39010522")
-	)
 	(label "LORA_RFI_N"
 		(at 259.08 184.15 90)
 		(effects
@@ -4879,8 +4909,8 @@
 		)
 		(uuid "e8cbac2c-786c-5e03-90e2-db33333d7b90")
 	)
-	(label "RF_SW_CTRL"
-		(at 309.88 184.15 90)
+	(label "RF_SW_CTRL_F"
+		(at 320.04 184.15 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4909,8 +4939,8 @@
 		)
 		(uuid "f6896e05-802d-533d-b52f-55cdea8612c0")
 	)
-	(label "RF_COM"
-		(at 314.96 133.35 90)
+	(label "RF_SW_CTRL"
+		(at 309.88 184.15 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4958,6 +4988,75 @@
 			(justify left bottom)
 		)
 		(uuid "fe3bde2f-7247-5da6-8b67-ed173856d757")
+	)
+	(global_label "RF_LORA"
+		(shape bidirectional)
+		(at 345.44 222.25 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "08bb5263-e78f-5ac2-acf3-7621d19972ad")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 345.44 222.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "RF_LORA"
+		(shape bidirectional)
+		(at 355.6 214.63 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0f54df3b-27b3-5e0c-b798-8bedf4e1aeb0")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 355.6 214.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "$SDA"
+		(shape bidirectional)
+		(at 365.76 68.58 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1074e802-efe6-5245-af94-5e68884ad1ed")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 365.76 68.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 	)
 	(global_label "$SDA"
 		(shape bidirectional)
@@ -5064,29 +5163,6 @@
 		(uuid "3553edff-14a0-5e20-a0b8-fb5ecbdd0042")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 91.44 91.44 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(global_label "$SCL"
-		(shape bidirectional)
-		(at 365.76 66.04 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "39297bd2-a3b1-5fc5-9017-e1d7078309e6")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 365.76 66.04 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5212,19 +5288,19 @@
 			)
 		)
 	)
-	(global_label "$SDA"
+	(global_label "SOFT_LED2"
 		(shape bidirectional)
-		(at 365.76 68.58 180)
+		(at 386.08 68.58 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify left)
 		)
-		(uuid "5c0f898c-d6d0-5644-8d8a-7cf8b020df46")
+		(uuid "5afe0a7e-eba1-5913-81ac-9da3c896b685")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 365.76 68.58 0)
+			(at 386.08 68.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5235,9 +5311,9 @@
 			)
 		)
 	)
-	(global_label "SOFT_LED1"
+	(global_label "DSON"
 		(shape bidirectional)
-		(at 386.08 66.04 0)
+		(at 386.08 73.66 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5245,9 +5321,9 @@
 			)
 			(justify left)
 		)
-		(uuid "5dad7f71-5626-5301-ab5c-d04e4e10e0a0")
+		(uuid "5c59427a-7aaa-54db-aa0b-705bc997d603")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 386.08 66.04 0)
+			(at 386.08 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5294,29 +5370,6 @@
 		(uuid "6108d987-b39f-59db-b887-244715090592")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 50.8 104.14 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(global_label "BATTRD"
-		(shape bidirectional)
-		(at 386.08 76.2 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "637f2c9a-9cef-5753-a487-e2415b9705ef")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 386.08 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5396,42 +5449,19 @@
 			)
 		)
 	)
-	(global_label "SOFT_LED3"
+	(global_label "$SCL"
 		(shape bidirectional)
-		(at 386.08 71.12 0)
+		(at 365.76 66.04 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify right)
 		)
-		(uuid "79964163-c925-540b-b86e-bb0f197c36ae")
+		(uuid "783fcb0a-22a3-513d-8526-e1e10834a999")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 386.08 71.12 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
-	(global_label "RF_LORA"
-		(shape bidirectional)
-		(at 314.96 140.97 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "7b3ba88f-d235-5798-85ef-fe7b13751a61")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 314.96 140.97 0)
+			(at 365.76 66.04 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5465,9 +5495,9 @@
 			)
 		)
 	)
-	(global_label "DSON"
+	(global_label "SOFT_LED3"
 		(shape bidirectional)
-		(at 386.08 73.66 0)
+		(at 386.08 71.12 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5475,9 +5505,9 @@
 			)
 			(justify left)
 		)
-		(uuid "87f5c8be-6e48-5ddf-a078-19c6623d1bd0")
+		(uuid "8e01e290-843f-5308-9bf1-c4220d4f5047")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 386.08 73.66 0)
+			(at 386.08 71.12 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5695,6 +5725,29 @@
 			)
 		)
 	)
+	(global_label "SOFT_LED1"
+		(shape bidirectional)
+		(at 386.08 66.04 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c1537fb8-4649-57b3-9dc0-39422000eb29")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 386.08 66.04 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
 	(global_label "CSB_MEM"
 		(shape bidirectional)
 		(at 91.44 104.14 0)
@@ -5731,6 +5784,29 @@
 		(uuid "daad6adf-72f7-5ee0-b886-643ed54f5fff")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 91.44 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+	)
+	(global_label "BATTRD"
+		(shape bidirectional)
+		(at 386.08 76.2 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "dbae971a-296d-5782-beb4-d109d6aed474")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 386.08 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5810,29 +5886,6 @@
 			)
 		)
 	)
-	(global_label "SOFT_LED2"
-		(shape bidirectional)
-		(at 386.08 68.58 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "ff965e97-6050-5b91-9821-1cbbc52b680f")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 386.08 68.58 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-	)
 	(symbol
 		(lib_id "Device:C")
 		(at 279.4 187.96 0)
@@ -5855,7 +5908,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TBD"
+		(property "Value" "1.8pF"
 			(at 281.94 189.23 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5889,6 +5942,17 @@
 			)
 		)
 		(property "Description" ""
+			(at 279.4 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "GJM1555C1H1R8BB01D"
 			(at 279.4 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -5936,7 +6000,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TBD"
+		(property "Value" "39pF"
 			(at 231.14 189.23 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -5970,6 +6034,17 @@
 			)
 		)
 		(property "Description" ""
+			(at 228.6 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "GJM1555C1H390JB01D"
 			(at 228.6 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -6229,6 +6304,87 @@
 			(project "RocketLocator"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
 					(reference "C50")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 355.6 35.56 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "11d1d46f-bab9-54e9-9a45-de3792946c58")
+		(property "Reference" "C63"
+			(at 358.14 34.29 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 358.14 36.83 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 355.6 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 355.6 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 355.6 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9782cc89-cf61-5be4-aafe-38c6fb9b1219")
+		)
+		(pin "2"
+			(uuid "60379c95-836e-5a0e-9bfc-87c733003bdb")
+		)
+		(instances
+			(project "RocketLocator"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
+					(reference "C63")
 					(unit 1)
 				)
 			)
@@ -6495,7 +6651,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TBD"
+		(property "Value" "DNP"
 			(at 292.1 189.23 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6555,8 +6711,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 309.88 187.96 0)
+		(lib_id "Device:C")
+		(at 320.04 187.96 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6565,8 +6721,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "1b6f2938-dbd7-56a9-9a22-89c9496fb0de")
-		(property "Reference" "R57"
-			(at 312.42 186.69 0)
+		(property "Reference" "C67"
+			(at 322.58 186.69 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6576,8 +6732,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100"
-			(at 312.42 189.23 0)
+		(property "Value" "1nF"
+			(at 322.58 189.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6587,8 +6743,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 309.88 187.96 0)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 320.04 187.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6599,7 +6755,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 309.88 187.96 0)
+			(at 320.04 187.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6610,7 +6766,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 309.88 187.96 0)
+			(at 320.04 187.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6629,7 +6785,86 @@
 		(instances
 			(project "RocketLocator"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
-					(reference "R57")
+					(reference "C67")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 335.28 222.25 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "1e64d3a7-41c3-5cf8-aa64-8f99989c5226")
+		(property "Reference" "#PWR143"
+			(at 335.28 225.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GND"
+			(at 335.28 225.75 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 335.28 222.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 335.28 222.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 335.28 222.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "71139df2-bcec-5aba-a06e-15f642c646bd")
+		)
+		(instances
+			(project "RocketLocator"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
+					(reference "#PWR143")
 					(unit 1)
 				)
 			)
@@ -6886,8 +7121,8 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 355.6 39.37 0)
+		(lib_id "power:+3V3")
+		(at 375.92 60.96 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -6896,8 +7131,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "266f0cc1-cd9e-5c33-901a-d4622ca4352b")
-		(property "Reference" "#PWR147"
-			(at 355.6 42.37 0)
+		(property "Reference" "#PWR145"
+			(at 375.92 63.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6908,8 +7143,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "GND"
-			(at 355.6 42.87 0)
+		(property "Value" "+3V3"
+			(at 375.92 57.46 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -6920,7 +7155,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 355.6 39.37 0)
+			(at 375.92 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6931,7 +7166,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 355.6 39.37 0)
+			(at 375.92 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6942,7 +7177,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 355.6 39.37 0)
+			(at 375.92 60.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6958,7 +7193,7 @@
 		(instances
 			(project "RocketLocator"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
-					(reference "#PWR147")
+					(reference "#PWR145")
 					(unit 1)
 				)
 			)
@@ -7065,7 +7300,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TBD"
+		(property "Value" "3.0pF"
 			(at 210.82 189.23 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7099,6 +7334,17 @@
 			)
 		)
 		(property "Description" ""
+			(at 208.28 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "GJM1555C1H3R0BB01D"
 			(at 208.28 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -7146,7 +7392,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TBD"
+		(property "Value" "2.4pF"
 			(at 261.62 189.23 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7180,6 +7426,17 @@
 			)
 		)
 		(property "Description" ""
+			(at 259.08 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "GJM1555C1H2R4BB01D"
 			(at 259.08 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -7367,6 +7624,85 @@
 	)
 	(symbol
 		(lib_id "power:GND")
+		(at 355.6 222.25 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "39863f60-f84f-5ad1-b95f-6fb0360c1397")
+		(property "Reference" "#PWR144"
+			(at 355.6 225.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GND"
+			(at 355.6 225.75 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 355.6 222.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 355.6 222.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 355.6 222.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6d2cc12e-2f49-50e2-97a5-95dd2d22d235")
+		)
+		(instances
+			(project "RocketLocator"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
+					(reference "#PWR144")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
 		(at 289.56 191.77 0)
 		(unit 1)
 		(body_style 1)
@@ -7524,6 +7860,85 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+3V3")
+		(at 355.6 31.75 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "3af902d7-3ba4-570f-b9c9-5fa48cdd2c3a")
+		(property "Reference" "#PWR148"
+			(at 355.6 34.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 355.6 28.25 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 355.6 31.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 355.6 31.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 355.6 31.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a3842249-92af-58cc-a0a0-e3d2f1d467b7")
+		)
+		(instances
+			(project "RocketLocator"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
+					(reference "#PWR148")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 335.28 165.1 0)
 		(unit 1)
@@ -7597,85 +8012,6 @@
 			(project "RocketLocator"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
 					(reference "#PWR139")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 320.04 191.77 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "407369fb-e540-5326-a954-d4f6557dd42e")
-		(property "Reference" "#PWR142"
-			(at 320.04 194.77 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "GND"
-			(at 320.04 195.27 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 320.04 191.77 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 320.04 191.77 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 320.04 191.77 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "347f7397-b4e4-5c8d-b329-6a5f7a7cd7d8")
-		)
-		(instances
-			(project "RocketLocator"
-				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
-					(reference "#PWR142")
 					(unit 1)
 				)
 			)
@@ -7955,7 +8291,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TBD"
+		(property "Value" "4.7nH"
 			(at 241.3 189.23 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7999,6 +8335,17 @@
 				)
 			)
 		)
+		(property "MPN" "LQW15AN4N7C00D"
+			(at 238.76 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "1b75cfab-8255-546d-97ad-e1776dceb01f")
 		)
@@ -8009,302 +8356,6 @@
 			(project "RocketLocator"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
 					(reference "L10")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 355.6 35.56 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "4dcd1cc2-f1ce-5665-b34d-93453d4ea869")
-		(property "Reference" "C63"
-			(at 358.14 34.29 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100nF"
-			(at 358.14 36.83 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 355.6 35.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 355.6 35.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 355.6 35.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "5c59427a-7aaa-54db-aa0b-705bc997d603")
-		)
-		(pin "2"
-			(uuid "dbae971a-296d-5782-beb4-d109d6aed474")
-		)
-		(instances
-			(project "RocketLocator"
-				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
-					(reference "C63")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Interface_Expansion:TCA9534")
-		(at 375.92 76.2 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "5093acdb-3568-5a9b-b981-d7a58ba2c97c")
-		(property "Reference" "U22"
-			(at 375.92 55.88 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TCA9534PWR"
-			(at 375.92 104.14 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm"
-			(at 375.92 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 375.92 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 375.92 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C783615"
-			(at 375.92 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "e4f85b21-3d4a-50bd-987e-1ebea1245c80")
-		)
-		(pin "2"
-			(uuid "f59954ff-4d96-5e92-a1f6-f8b8582c16ff")
-		)
-		(pin "3"
-			(uuid "7b1e2ce0-25d2-5c03-8834-ec5dcc2804ec")
-		)
-		(pin "4"
-			(uuid "71139df2-bcec-5aba-a06e-15f642c646bd")
-		)
-		(pin "5"
-			(uuid "1e64d3a7-41c3-5cf8-aa64-8f99989c5226")
-		)
-		(pin "6"
-			(uuid "cbb3a589-c902-5827-81b0-2641c0f5f07a")
-		)
-		(pin "7"
-			(uuid "27f7bec3-e0f0-5b9d-b2dc-c2f4b4fea0ba")
-		)
-		(pin "8"
-			(uuid "7bf40c94-bc81-56b4-813a-7be62504963f")
-		)
-		(pin "9"
-			(uuid "5b39ca05-6e5a-5ca4-a80f-48a99ba59f25")
-		)
-		(pin "10"
-			(uuid "08bb5263-e78f-5ac2-acf3-7621d19972ad")
-		)
-		(pin "11"
-			(uuid "5caf1a1b-be8d-5da3-90c2-59220b50d2f0")
-		)
-		(pin "12"
-			(uuid "09efc51a-bbfc-55b4-8942-abb9f40df064")
-		)
-		(pin "13"
-			(uuid "70f061b0-2740-57a6-9383-004402dfa9c6")
-		)
-		(pin "14"
-			(uuid "0f54df3b-27b3-5e0c-b798-8bedf4e1aeb0")
-		)
-		(pin "15"
-			(uuid "6d2cc12e-2f49-50e2-97a5-95dd2d22d235")
-		)
-		(pin "16"
-			(uuid "39863f60-f84f-5ad1-b95f-6fb0360c1397")
-		)
-		(instances
-			(project "RocketLocator"
-				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
-					(reference "U22")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 320.04 187.96 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "52adc4ca-8b0d-5f77-a881-6878878c42b0")
-		(property "Reference" "C67"
-			(at 322.58 186.69 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1nF"
-			(at 322.58 189.23 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 320.04 187.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 320.04 187.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 320.04 187.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "65503b3b-506f-5ef9-8d55-fcbc736498a4")
-		)
-		(pin "2"
-			(uuid "e571441e-969f-5b33-9a00-30ac17a09615")
-		)
-		(instances
-			(project "RocketLocator"
-				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
-					(reference "C67")
 					(unit 1)
 				)
 			)
@@ -8332,7 +8383,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TBD"
+		(property "Value" "1.8pF"
 			(at 251.46 189.23 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8366,6 +8417,17 @@
 			)
 		)
 		(property "Description" ""
+			(at 248.92 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "GJM1555C1H1R8BB01D"
 			(at 248.92 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -8471,6 +8533,85 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 355.6 39.37 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "556da9dd-3405-5d0b-823d-b33c0b2864ce")
+		(property "Reference" "#PWR149"
+			(at 355.6 42.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GND"
+			(at 355.6 42.87 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 355.6 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 355.6 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 355.6 39.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "cb633838-a07f-5444-8eac-4e84e6bb508b")
+		)
+		(instances
+			(project "RocketLocator"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
+					(reference "#PWR149")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:L")
 		(at 167.64 187.96 0)
 		(unit 1)
@@ -8492,7 +8633,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "82nH"
+		(property "Value" "47nH"
 			(at 170.18 189.23 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8526,6 +8667,17 @@
 			)
 		)
 		(property "Description" ""
+			(at 167.64 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "LQW15AN47NJ00D"
 			(at 167.64 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -8631,85 +8783,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3V3")
-		(at 355.6 31.75 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "5e394961-3ab6-50e5-98f6-516b40919aa6")
-		(property "Reference" "#PWR146"
-			(at 355.6 34.75 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 355.6 28.25 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 355.6 31.75 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 355.6 31.75 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 355.6 31.75 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "be5cf60b-b70a-5918-bcc0-c08a38772b78")
-		)
-		(instances
-			(project "RocketLocator"
-				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
-					(reference "#PWR146")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 35.56 39.37 0)
 		(unit 1)
@@ -8783,6 +8856,85 @@
 			(project "RocketLocator"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
 					(reference "#PWR108")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 320.04 191.77 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "65503b3b-506f-5ef9-8d55-fcbc736498a4")
+		(property "Reference" "#PWR142"
+			(at 320.04 194.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GND"
+			(at 320.04 195.27 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 320.04 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 320.04 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 320.04 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "378959b2-020f-50c0-9c19-98b2c3a392ab")
+		)
+		(instances
+			(project "RocketLocator"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
+					(reference "#PWR142")
 					(unit 1)
 				)
 			)
@@ -8957,7 +9109,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "6bb3c339-b3e6-50e6-9552-6d7238e7bc42")
 		(property "Reference" "C59"
 			(at 190.5 186.69 0)
@@ -8970,7 +9122,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TBD"
+		(property "Value" "DNP"
 			(at 190.5 189.23 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9024,6 +9176,177 @@
 			(project "RocketLocator"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
 					(reference "C59")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 355.6 218.44 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "70f061b0-2740-57a6-9383-004402dfa9c6")
+		(property "Reference" "C69"
+			(at 358.14 217.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "3.3pF"
+			(at 358.14 219.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 355.6 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 355.6 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 355.6 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "GJM1555C1H3R3BB01D"
+			(at 355.6 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5caf1a1b-be8d-5da3-90c2-59220b50d2f0")
+		)
+		(pin "2"
+			(uuid "09efc51a-bbfc-55b4-8942-abb9f40df064")
+		)
+		(instances
+			(project "RocketLocator"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
+					(reference "C69")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 363.22 83.82 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "74dd17ae-f377-5b27-a361-b9e44dfeab89")
+		(property "Reference" "#PWR147"
+			(at 363.22 86.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GND"
+			(at 363.22 87.32 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 363.22 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 363.22 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 363.22 83.82 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8ab17946-2337-50d1-ab6d-ed586078c2b2")
+		)
+		(instances
+			(project "RocketLocator"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
+					(reference "#PWR147")
 					(unit 1)
 				)
 			)
@@ -9425,6 +9748,98 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:L")
+		(at 345.44 218.44 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7bf40c94-bc81-56b4-813a-7be62504963f")
+		(property "Reference" "L11"
+			(at 347.98 217.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "9.1nH"
+			(at 347.98 219.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Inductor_SMD:L_0402_1005Metric"
+			(at 345.44 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 345.44 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 345.44 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "LQW15AN9N1H00D"
+			(at 345.44 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "cbb3a589-c902-5827-81b0-2641c0f5f07a")
+		)
+		(pin "2"
+			(uuid "27f7bec3-e0f0-5b9d-b2dc-c2f4b4fea0ba")
+		)
+		(instances
+			(project "RocketLocator"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
+					(reference "L11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Custom:nRF54L15-QFAA")
 		(at 71.12 116.84 0)
 		(unit 1)
@@ -9652,6 +10067,85 @@
 			(project "RocketLocator"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
 					(reference "U20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 375.92 88.9 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7d4f45b2-b890-5b29-8a44-4281f42f835b")
+		(property "Reference" "#PWR146"
+			(at 375.92 91.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GND"
+			(at 375.92 92.4 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 375.92 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 375.92 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 375.92 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "61dbadb8-ddc8-593a-a465-8726cca77009")
+		)
+		(instances
+			(project "RocketLocator"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
+					(reference "#PWR146")
 					(unit 1)
 				)
 			)
@@ -10099,19 +10593,18 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 363.22 83.82 0)
+		(lib_id "Interface_Expansion:TCA9534")
+		(at 375.92 76.2 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
+		(in_bom yes)
+		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "8e01e290-843f-5308-9bf1-c4220d4f5047")
-		(property "Reference" "#PWR145"
-			(at 363.22 86.82 0)
-			(hide yes)
+		(uuid "88564994-e1e9-5f57-bf36-d8c5f1258f4d")
+		(property "Reference" "U22"
+			(at 375.92 55.88 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10121,8 +10614,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "GND"
-			(at 363.22 87.32 0)
+		(property "Value" "TCA9534PWR"
+			(at 375.92 104.14 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10132,8 +10625,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
-			(at 363.22 83.82 0)
+		(property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm"
+			(at 375.92 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10144,7 +10637,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 363.22 83.82 0)
+			(at 375.92 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10155,7 +10648,18 @@
 			)
 		)
 		(property "Description" ""
-			(at 363.22 83.82 0)
+			(at 375.92 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C783615"
+			(at 375.92 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10166,12 +10670,57 @@
 			)
 		)
 		(pin "1"
-			(uuid "5afe0a7e-eba1-5913-81ac-9da3c896b685")
+			(uuid "39297bd2-a3b1-5fc5-9017-e1d7078309e6")
+		)
+		(pin "2"
+			(uuid "5c0f898c-d6d0-5644-8d8a-7cf8b020df46")
+		)
+		(pin "3"
+			(uuid "51acf7e8-9e13-520b-88a2-5015e3072bd8")
+		)
+		(pin "4"
+			(uuid "5dad7f71-5626-5301-ab5c-d04e4e10e0a0")
+		)
+		(pin "5"
+			(uuid "ff965e97-6050-5b91-9821-1cbbc52b680f")
+		)
+		(pin "6"
+			(uuid "79964163-c925-540b-b86e-bb0f197c36ae")
+		)
+		(pin "7"
+			(uuid "87f5c8be-6e48-5ddf-a078-19c6623d1bd0")
+		)
+		(pin "8"
+			(uuid "637f2c9a-9cef-5753-a487-e2415b9705ef")
+		)
+		(pin "9"
+			(uuid "f9785993-28c6-5f20-944e-033d85eefe34")
+		)
+		(pin "10"
+			(uuid "dda9ff5c-ec0a-5520-bc87-b0edfa2a7f17")
+		)
+		(pin "11"
+			(uuid "95f63dbe-9a2b-534f-850d-8b83247ce6d1")
+		)
+		(pin "12"
+			(uuid "ec761d47-71db-5582-9d8f-bc81bcd5deb0")
+		)
+		(pin "13"
+			(uuid "9709ec00-a74f-539a-b187-ec799fb2276d")
+		)
+		(pin "14"
+			(uuid "fe29713f-b061-5a6d-9efe-1afa7414db7f")
+		)
+		(pin "15"
+			(uuid "c4a2c7e5-49d9-57e8-92dd-b4d4c8e94b34")
+		)
+		(pin "16"
+			(uuid "2b40ad9a-59f1-5e1f-bdfd-c3bdd7787f03")
 		)
 		(instances
 			(project "RocketLocator"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
-					(reference "#PWR145")
+					(reference "U22")
 					(unit 1)
 				)
 			)
@@ -10413,85 +10962,6 @@
 			(project "RocketLocator"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
 					(reference "C46")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3V3")
-		(at 375.92 60.96 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "9709ec00-a74f-539a-b187-ec799fb2276d")
-		(property "Reference" "#PWR143"
-			(at 375.92 63.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 375.92 57.46 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 375.92 60.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 375.92 60.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 375.92 60.96 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "ec761d47-71db-5582-9d8f-bc81bcd5deb0")
-		)
-		(instances
-			(project "RocketLocator"
-				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
-					(reference "#PWR143")
 					(unit 1)
 				)
 			)
@@ -10856,7 +11326,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "82pF"
+		(property "Value" "47pF"
 			(at 160.02 189.23 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10890,6 +11360,17 @@
 			)
 		)
 		(property "Description" ""
+			(at 157.48 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "GJM1555C1H470JB01D"
 			(at 157.48 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -11018,7 +11499,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TBD"
+		(property "Value" "2.5nH"
 			(at 200.66 189.23 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11052,6 +11533,17 @@
 			)
 		)
 		(property "Description" ""
+			(at 198.12 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "LQW15AN2N5C00D"
 			(at 198.12 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -11099,7 +11591,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TBD"
+		(property "Value" "15nH"
 			(at 271.78 189.23 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11143,6 +11635,17 @@
 				)
 			)
 		)
+		(property "MPN" "LQW15AN15NH00D"
+			(at 269.24 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ebeb3182-4d9b-5859-b2a5-5a805d7a9693")
 		)
@@ -11159,7 +11662,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:L")
+		(lib_id "Device:R")
 		(at 177.8 187.96 0)
 		(unit 1)
 		(body_style 1)
@@ -11169,7 +11672,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "a226d192-f457-5b58-8303-f6fa2486c517")
-		(property "Reference" "L7"
+		(property "Reference" "R58"
 			(at 180.34 186.69 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11180,7 +11683,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TBD"
+		(property "Value" "0R"
 			(at 180.34 189.23 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11191,7 +11694,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Inductor_SMD:L_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 177.8 187.96 0)
 			(hide yes)
 			(show_name no)
@@ -11224,6 +11727,17 @@
 				)
 			)
 		)
+		(property "MPN" "CRCW04020000Z0ED"
+			(at 177.8 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "bc04b16d-143f-5a9e-b08e-8823753802bd")
 		)
@@ -11233,7 +11747,7 @@
 		(instances
 			(project "RocketLocator"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
-					(reference "L7")
+					(reference "R58")
 					(unit 1)
 				)
 			)
@@ -11718,6 +12232,98 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C")
+		(at 325.12 218.44 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "b7f49b52-00eb-5495-8fc4-ed0b39010522")
+		(property "Reference" "C62"
+			(at 327.66 217.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "39pF"
+			(at 327.66 219.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 325.12 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 325.12 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 325.12 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "GJM1555C1H390JB01D"
+			(at 325.12 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e571441e-969f-5b33-9a00-30ac17a09615")
+		)
+		(pin "2"
+			(uuid "52adc4ca-8b0d-5f77-a881-6878878c42b0")
+		)
+		(instances
+			(project "RocketLocator"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
+					(reference "C62")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 147.32 191.77 0)
 		(unit 1)
@@ -12043,85 +12649,6 @@
 			(project "RocketLocator"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
 					(reference "C52")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 375.92 88.9 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "c4a2c7e5-49d9-57e8-92dd-b4d4c8e94b34")
-		(property "Reference" "#PWR144"
-			(at 375.92 91.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "GND"
-			(at 375.92 92.4 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 375.92 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 375.92 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 375.92 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "fe29713f-b061-5a6d-9efe-1afa7414db7f")
-		)
-		(instances
-			(project "RocketLocator"
-				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
-					(reference "#PWR144")
 					(unit 1)
 				)
 			)
@@ -13069,6 +13596,17 @@
 				)
 			)
 		)
+		(property "MPN" "GRM155R71C473KA01D"
+			(at 147.32 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "57a4db67-d3a6-5fa6-9acb-c5fc76096d9c")
 		)
@@ -13187,7 +13725,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TBD"
+		(property "Value" "5.6pF"
 			(at 220.98 189.23 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13231,6 +13769,17 @@
 				)
 			)
 		)
+		(property "MPN" "GJM1555C1H5R6CB01D"
+			(at 218.44 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ff5e7c02-523c-521a-9f5c-f36b2c513b1a")
 		)
@@ -13247,8 +13796,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 314.96 137.16 0)
+		(lib_id "Device:R")
+		(at 309.88 187.96 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -13257,8 +13806,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "decc744d-5ed6-54da-aea5-2be7b1f96b77")
-		(property "Reference" "C62"
-			(at 317.5 135.89 0)
+		(property "Reference" "R57"
+			(at 312.42 186.69 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13268,8 +13817,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47pF"
-			(at 317.5 138.43 0)
+		(property "Value" "100"
+			(at 312.42 189.23 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -13279,8 +13828,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 314.96 137.16 0)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 309.88 187.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13291,7 +13840,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 314.96 137.16 0)
+			(at 309.88 187.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13302,7 +13851,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 314.96 137.16 0)
+			(at 309.88 187.96 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -13321,7 +13870,7 @@
 		(instances
 			(project "RocketLocator"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
-					(reference "C62")
+					(reference "R57")
 					(unit 1)
 				)
 			)
@@ -13653,6 +14202,98 @@
 			(project "RocketLocator"
 				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
 					(reference "#PWR130")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 335.28 218.44 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f59954ff-4d96-5e92-a1f6-f8b8582c16ff")
+		(property "Reference" "C68"
+			(at 337.82 217.17 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "3.3pF"
+			(at 337.82 219.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 335.28 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 335.28 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 335.28 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "GJM1555C1H3R3BB01D"
+			(at 335.28 218.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "be4a4e16-d608-5c21-af55-65f6f0c195e8")
+		)
+		(pin "2"
+			(uuid "e4f85b21-3d4a-50bd-987e-1ebea1245c80")
+		)
+		(instances
+			(project "RocketLocator"
+				(path "/e63e39d7-6ac0-4ffd-8aa3-1841a4541b55/fc5f6062-7bdf-54e7-8e59-2a92d20131cc"
+					(reference "C68")
 					(unit 1)
 				)
 			)
