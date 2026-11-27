@@ -334,7 +334,7 @@
 		(uuid "5e88c858-3e80-476a-9c19-f316eccdcf10")
 	)
 	(embedded_fonts no)
-	(model "${KICAD9_3DMODEL_DIR}/Package_SO.3dshapes/JEITA_SOIC-8_3.9x4.9mm_P1.27mm.step"
+	(model "${KIPRJMOD}/lib/3dmodels/kicad/JEITA_SOIC-8_3.9x4.9mm_P1.27mm.step"
 		(offset
 			(xyz 0 0 0)
 		)

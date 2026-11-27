@@ -197,4 +197,15 @@
 		(uuid "34d181a5-1910-4e2f-92d8-e76a28aab798")
 	)
 	(embedded_fonts no)
+	(model "${KIPRJMOD}/lib/3dmodels/LED_XL-Z1912RGBA-SG.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

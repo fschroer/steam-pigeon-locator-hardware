@@ -317,4 +317,15 @@
 		)
 	)
 	(embedded_fonts no)
+	(model "${KIPRJMOD}/lib/3dmodels/kicad/U.FL_Hirose_U.FL-R-SMT-1_Vertical.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 90)
+		)
+	)
 )
