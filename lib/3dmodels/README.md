@@ -14,3 +14,9 @@ without KiCad's stock 3D library installed.
 
 `tools/set_3dmodels.py` rewrites the model references in the board and in
 `lib/Custom.pretty` from its footprint-to-model table.
+
+B03 additions (nRF54L15 / SX1262 sheet) come from kicad-packages3D master. Three
+footprints have no stock model, so they borrow one with the same body outline:
+the nRF54L15 QFN-48 6x6 uses `UQFN-48-1EP_6x6mm_P0.4mm_EP4.45x4.45mm.step`
+(thinner body), and the 2012 32.768 kHz crystal and the 2016 TCXO use
+`Crystal_SMD_2016-4Pin_2.0x1.6mm.step`.
