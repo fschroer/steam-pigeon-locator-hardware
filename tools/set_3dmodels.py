@@ -36,6 +36,20 @@ MAP = {
     "Custom:XCVR_SAM-M10Q-00B": (P + "u-blox_SAM-M10Q.step", 0),
     "Custom:PiezoBuzzer": (P + "Buzzer_Piezo_D14mm_H7mm_RM7.6.step", 0),
     "Custom:USB_C_Receptacle_Palconn_UTC16-G": (P + "USB_C_Receptacle_Palconn_UTC16-G.step", 0),
+    "Capacitor_SMD:C_0201_0603Metric": (K + "C_0201_0603Metric.step", 0),
+    "Inductor_SMD:L_0201_0603Metric": (K + "L_0201_0603Metric.step", 0),
+    "Inductor_SMD:L_0402_1005Metric": (K + "L_0402_1005Metric.step", 0),
+    "Inductor_SMD:L_0603_1608Metric": (K + "L_0603_1608Metric.step", 0),
+    "Inductor_SMD:L_0805_2012Metric": (K + "L_0805_2012Metric.step", 0),
+    "Crystal:Crystal_SMD_2016-4Pin_2.0x1.6mm": (K + "Crystal_SMD_2016-4Pin_2.0x1.6mm.step", 0),
+    # stand-ins: no stock model for these footprints; same body outline
+    "Crystal:Crystal_SMD_2012-2Pin_2.0x1.2mm": (K + "Crystal_SMD_2016-4Pin_2.0x1.6mm.step", 0),
+    "Oscillator:Oscillator_SMD_SiT_PQFN-4Pin_2.0x1.6mm": (K + "Crystal_SMD_2016-4Pin_2.0x1.6mm.step", 0),
+    "Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm_EP4.6x4.6mm": (K + "UQFN-48-1EP_6x6mm_P0.4mm_EP4.45x4.45mm.step", 0),
+    "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm": (K + "QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm.step", 0),
+    "Package_SO:TSSOP-16_4.4x5mm_P0.65mm": (K + "TSSOP-16_4.4x5mm_P0.65mm.step", 0),
+    "Package_TO_SOT_SMD:SOT-363_SC-70-6": (K + "SOT-363_SC-70-6.step", 0),
+    "RF_Antenna:Johanson_2450AT18x100": (K + "Johanson_2450AT18x100.step", 0),
 }
 
 MODEL_RE = re.compile(r'\r?\n(\t+)\(model "[^"]*"\r?\n.*?\r?\n\1\)', re.S)
