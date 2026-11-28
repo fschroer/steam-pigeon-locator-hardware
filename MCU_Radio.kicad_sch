@@ -3901,7 +3901,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "LoRa radio: Semtech SX1262, 915 MHz high-power PA (+22 dBm max). Same radio core as the STM32WL, so the receiver link is unchanged.\nSPI shared with flash/IMU/baro. DIO2 drives the RF switch, DIO3 powers the TCXO (set 2.7 V in firmware for this TCXO)."
+	(text "LoRa radio: Semtech SX1262, 915 MHz high-power PA (+22 dBm max). Same radio core as the STM32WL, so the receiver link is unchanged.\nSPI shared with flash/IMU/baro. DIO2 drives the RF switch, DIO3 powers the TCXO (set 3.0 V in firmware: TG2016SMN needs 2.66-3.465 V; VBAT must stay >= 3.2 V)."
 		(exclude_from_sim no)
 		(at 177.8 12.7 0)
 		(effects
